@@ -306,46 +306,43 @@
             }
         }
         
-        /* Ensures the navigation links are always visible but stack on small screens */
-        #mobile-menu {
-            display: flex; /* Always display */
-            flex-direction: column; /* Stack on small screens */
-            gap: 1rem; /* Spacing for stacked links */
-            margin-top: 1rem; /* Margin when stacked */
-            align-items: center; /* Center items when stacked */
-        }
-
-        @media (min-width: 768px) {
+        /* Mobile specific styles for navigation */
+        @media (max-width: 767px) {
+            nav {
+                flex-direction: column; /* Stack logo and nav links vertically */
+                align-items: center; /* Center items */
+            }
             #mobile-menu {
-                flex-direction: row; /* Horizontal on desktop */
-                gap: 2rem; /* Spacing for horizontal links */
-                margin-top: 0; /* No top margin on desktop */
+                display: none; /* Hide nav links by default on mobile */
+                width: 100%; /* Take full width */
+                margin-top: 1rem; /* Space below "Healzo" text */
             }
-            .hero-buttons {
-                flex-direction: row; /* Buttons side-by-side on larger screens */
+            #mobile-menu.active { /* Class to show mobile menu */
+                display: flex;
+                flex-direction: column;
             }
-        }
-
-        /* Styling for the logo at the very top */
-        .top-logo {
-            padding-top: 20px; /* Adjust as needed for spacing from top */
-            padding-bottom: 20px; /* Adjust as needed for spacing to nav */
-            text-align: center;
-        }
-        .top-logo img { /* Target the image directly */
-            max-width: 250px; /* Increased logo size */
-            height: auto;
-            display: block; /* Center the image */
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Styling for the email icon */
-        .email-icon {
-            width: 1.5rem;
-            height: 1.5rem;
-            color: var(--healzo-primary-color);
-            margin-right: 0.75rem;
+            #mobile-menu a {
+                width: calc(100% - 2rem); /* Full width minus padding */
+                text-align: center;
+                padding: 0.75rem; /* Make links bigger for touch */
+            }
+            .btn-whatsapp { /* Ensures WhatsApp button is styled consistently on mobile nav */
+                 padding: 0.75rem 1rem;
+                 width: auto; /* Allow WhatsApp button to size naturally */
+            }
+            nav div:first-child { /* Adjust "Healzo" text alignment on mobile nav */
+                width: 100%;
+                text-align: center;
+            }
+            .mobile-menu-button { /* Show hamburger icon on mobile */
+                display: block;
+            }
+            .logo-text-wrapper { /* Ensure logo and text are aligned on mobile nav */
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -353,7 +350,7 @@
 
     <!-- Logo at the very top -->
     <div class="top-logo">
-        <img src="https://hmsriot.github.io/HEALZO/Healzo_logo_transparent_background.png" alt="Healzo Logo" onerror="this.onerror=null;this.src='https://placehold.co/250x80/cccccc/000000?text=Healzo+Logo';" />
+        <img src="https://hmsriot.github.io/HEALZO/Healzo_logo_transparent_background.png" alt="Healzo Logo" onerror="this.onerror=null;this.src='https://placehold.co/160x50/cccccc/000000?text=Healzo+Logo';" />
     </div>
 
     <!-- Hero Section -->
@@ -387,12 +384,19 @@
 
     <!-- Navigation Bar -->
     <nav class="bg-white shadow-md" style="padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom-left-radius: 0.5rem; border-bottom-right-radius: 0.5rem;">
-        <!-- Logo/Company Name -->
-        <div style="font-size: 1.5rem; font-weight: 700; color: var(--healzo-primary-color);">Healzo</div>
+        <!-- Logo/Company Name and Mobile Button Wrapper -->
+        <div class="logo-text-wrapper">
+            <div style="font-size: 1.5rem; font-weight: 700; color: var(--healzo-primary-color);">Healzo</div>
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button id="mobile-menu-button" class="mobile-menu-button" style="color: #4b5563; border: none; background: none; cursor: pointer;" aria-label="Toggle mobile menu">
+                <svg style="width: 1.5rem; height: 1.5rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
 
         <!-- Navigation Links -->
         <div id="mobile-menu">
-            <!-- Removed 'Home' button from navigation -->
             <a href="#services" style="color: #4b5563; text-decoration: none; transition: color 0.3s ease-in-out; font-weight: 500;">Services</a>
             <a href="#about" style="color: #4b5563; text-decoration: none; transition: color 0.3s ease-in-out; font-weight: 500;">About Us</a>
             <a href="#contact" style="color: #4b5563; text-decoration: none; transition: color 0.3s ease-in-out; font-weight: 500;">Contact</a>
@@ -448,7 +452,7 @@
                     <li>Hypertension care</li>
                     <li>Stroke recovery assistance</li>
                     <li>COPD/Asthma support</li>
-                    <li>Regular vitals charting and escalation if needed</li>
+                    <li>Regular vitals charting and escalation if needed)</li>
                 </ul>
             </div>
 
@@ -542,8 +546,10 @@
                 </p>
                 <ul style="list-style: none; padding: 0; margin: 0;">
                     <li style="display: flex; align-items: center; margin-bottom: 1rem;">
-                        <svg style="width: 1.5rem; height: 1.5rem; color: var(--healzo-primary-color); margin-right: 0.75rem;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.614 5.174a9 9 0 010 13.652m-1.579 1.578a12 12 0 01-16.115-16.115M12 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <!-- Email Icon (Envelope) -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail" style="color: var(--healzo-primary-color); margin-right: 0.75rem;">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
                         </svg>
                         Email: <a href="mailto:info@healzo.com" style="color: #4f46e5; text-decoration: underline;">info@healzo.com</a>
                     </li>
@@ -601,6 +607,23 @@
     </footer>
 
     <script>
+        // JavaScript for mobile menu toggle (re-implementing hamburger functionality)
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu if a navigation link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(item => {
+            item.addEventListener('click', () => {
+                if (mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                }
+            });
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
