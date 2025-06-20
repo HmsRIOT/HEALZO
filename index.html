@@ -227,8 +227,10 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-lg */
             display: inline-flex;
             align-items: center;
-            padding: 0.5rem 1rem; /* py-2 px-4 */
+            padding: 0.75rem 2rem; /* py-3 px-8 - changed from 0.5rem 1rem for prominence */
             text-decoration: none;
+            font-size: 1.125rem; /* Match Send Message button size */
+            font-weight: 700; /* Match Send Message button boldness */
         }
         .btn-whatsapp:hover {
             background-color: #16a34a; /* hover:bg-green-600 */
@@ -324,37 +326,31 @@
             }
         }
 
-        /* Logo specific styling from provided GitHub code */
-        img.logo {
-            max-width: 250px; /* Increased logo size */
-            margin-bottom: 20px;
-        }
-        .footer-github {
-            margin-top: 2.5rem; /* Equivalent of 40px */
-            font-size: 0.85em;
-            color: #888;
-        }
-
         /* Styling for the logo at the very top */
         .top-logo {
             padding-top: 20px; /* Adjust as needed for spacing from top */
             padding-bottom: 20px; /* Adjust as needed for spacing to nav */
             text-align: center;
         }
-        .top-logo img {
-            max-width: 250px; /* Increased logo size */
+        .top-logo svg { /* Target the SVG directly */
+            max-width: 80px; /* Adjusted size for an icon */
             height: auto;
-            display: block; /* Center the image */
+            display: block; /* Center the icon */
             margin-left: auto;
             margin-right: auto;
+            color: var(--healzo-primary-color); /* Apply primary color to icon */
         }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Logo at the very top -->
+    <!-- Logo at the very top (now using an SVG icon) -->
     <div class="top-logo">
-        <img src="https://hmsriot.github.io/HEALZO/Healzo_logo_transparent_background.png" alt="Healzo Logo" />
+        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-square">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="12" y1="8" x2="12" y2="16"></line>
+            <line x1="8" y1="12" x2="16" y2="12"></line>
+        </svg>
     </div>
 
     <!-- Hero Section -->
@@ -372,7 +368,14 @@
                 Now serving: Coimbatore · Vellore · Chennai
             </p>
             <div class="hero-buttons" style="display: flex; justify-content: center; align-items: center; gap: 1rem;">
-                <!-- 'Learn More' button removed as requested -->
+                <!-- 'Book on WhatsApp' Button moved to Hero Section for prominence -->
+                <a href="https://wa.me/919962609409?text=Hello%20Healzo%2C%20I%20would%20like%20to%20book%20your%20services."
+                   class="btn-whatsapp btn-whatsapp-hero" target="_blank">
+                    <svg style="width: 1.5rem; height: 1.5rem; margin-right: 0.5rem;" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.9L2.05 22L7.34 20.61C8.89 21.45 10.59 21.86 12.04 21.86C17.5 21.86 21.95 17.41 21.95 11.95C21.95 6.5 17.5 2 12.04 2ZM17.18 16.18C16.92 16.74 15.65 17.48 15.35 17.6C15.06 17.71 14.88 17.76 14.59 17.65C14.31 17.53 13.43 17.23 12.39 16.69C10.66 15.75 9.42 14.15 9.15 13.72C8.89 13.28 8.71 13.06 8.44 12.8C8.17 12.53 7.91 12.18 8.16 11.75C8.4  11.31 8.74 10.45 8.95 10.02C9.17 9.59 9.3  9.49 9.42 9.47C9.54 9.45 9.68 9.44 9.8 9.44C9.91 9.44 10.05 9.44 10.17 9.44C10.29 9.44 10.46 9.48 10.64 9.66C10.82 9.85 11.05 10.09 11.19 10.28C11.33 10.47 11.43 10.59 11.59 10.83C11.75 11.08 11.79 11.16 11.83 11.23C11.87 11.31 11.89 11.34 11.81 11.52C11.73  11.69 11.65 11.81 11.47 11.98C11.3 12.15 11.1 12.34 10.92 12.52C10.74 12.7 10.59 12.86 10.74 13.04C10.89 13.21 11.37 13.98 12.08 14.59C12.63 15.07 13.07 15.37 13.4 15.52C13.73 15.68 14.02 15.77 14.28 15.86C14.54 15.96 15.06 15.92 15.5 15.67C15.94  15.43 16.3 15.19 16.54 15.01C16.79 14.82 17.26 14.86C17.51 14.95 17.65 15.22 17.56 15.48C17.47  15.74 17.4 15.95 17.18 16.18Z"/>
+                    </svg>
+                    Book on WhatsApp
+                </a>
             </div>
         </div>
     </section>
@@ -382,23 +385,13 @@
         <!-- Logo/Company Name -->
         <div style="font-size: 1.5rem; font-weight: 700; color: var(--healzo-primary-color);">Healzo</div>
 
-        <!-- Navigation Links (no mobile menu button) -->
+        <!-- Navigation Links -->
         <div id="mobile-menu">
-            <a href="#home" style="color: #4b5563; text-decoration: none; transition: color 0.3s ease-in-out; font-weight: 500;">Home</a>
+            <!-- Removed 'Home' button from navigation -->
             <a href="#services" style="color: #4b5563; text-decoration: none; transition: color 0.3s ease-in-out; font-weight: 500;">Services</a>
             <a href="#about" style="color: #4b5563; text-decoration: none; transition: color 0.3s ease-in-out; font-weight: 500;">About Us</a>
             <a href="#contact" style="color: #4b5563; text-decoration: none; transition: color 0.3s ease-in-out; font-weight: 500;">Contact</a>
-            <!-- 'Book on WhatsApp' Button in Navigation -->
-            <a href="https://wa.me/919962609409?text=Hello%20Healzo%2C%20I%20would%20like%20to%20book%20your%20services."
-               class="btn-whatsapp" target="_blank">
-                <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="width: 1.25rem; height: 1.25rem; margin-right: 0.5rem;">
-                    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.9L2.05 22L7.34 20.61C8.89 21.45 10.59 21.86 12.04 21.86C17.5 21.86 21.95 17.41 21.95 11.95C21.95 6.5 17.5 2 12.04 2ZM17.18 16.18C16.92 16.74 15.65 17.48 15.35 17.6C15.06 17.71 14.88 17.76 14.59 17.65C14.31 17.53 13.43 17.23 12.39 16.69C10.66 15.75 9.42 14.15 9.15 13.72C8.89 13.28 8.71 13.06 8.44 12.8C8.17 12.53 7.91 12.18 8.16 11.75C8.4  11.31 8.74 10.45 8.95 10.02C9.17 9.59 9.3  9.49 9.42 9.47C9.54 9.45 9.68 9.44 9.8 9.44C9.91 9.44 10.05 9.44 10.17 9.44C10.29 9.44 10.46 9.48 10.64 9.66C10.82 9.85 11.05 10.09 11.19 10.28C11.33 10.47 11.43 10.59 11.59 10.83C11.75 11.08 11.79  11.16 11.83 11.23C11.87 11.31 11.89 11.34 11.81 11.52C11.73  11.69 11.65 11.81 11.47 11.98C11.3 12.15 11.1 12.34 10.92 12.52C10.74 12.7 10.59 12.86 10.74 13.04C10.89 13.21 11.37 13.98 12.08 14.59C12.63 15.07 13.07 15.37 13.4 15.52C13.73 15.68 14.02 15.77 14.28 15.86C14.54 15.96 15.06 15.92 15.5 15.67C15.94  15.43 16.3 15.19 16.54 15.01C16.79 14.82 17.26 14.86C17.51 14.95 17.65 15.22 17.56 15.48C17.47  15.74 17.4 15.95 17.18 16.18Z"/>
-                            </svg>
-                            Book on WhatsApp
-                        </a>
-                    </li>
-                </ul>
-            </div>
+        </div>
     </nav>
 
     <!-- Services Section -->
